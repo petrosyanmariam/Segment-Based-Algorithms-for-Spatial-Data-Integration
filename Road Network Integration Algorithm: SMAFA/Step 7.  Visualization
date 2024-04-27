@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+
+# Plot integrated road network
+ax = integrated_data.plot(color='blue', linewidth=1)
+ground_truth.plot(ax=ax, color='green', linewidth=1)
+plt.title('Integrated Road Network')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.show()
+
+# Plot detected discrepancies
+if errors:
+    for error in errors:
+        error[0].plot(color='red')
+        error[1].plot(color='orange')
+    plt.title('Detected Discrepancies')
+    plt.xlabel('Longitude')
+    plt.ylabel('Latitude')
+    plt.show()
