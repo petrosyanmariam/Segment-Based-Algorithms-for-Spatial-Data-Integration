@@ -1,0 +1,5 @@
+# Sort similarities by score
+similarities.sort(key=lambda x: x[2])
+
+# Select top matches or use a threshold to filter matches
+top_matches = [match for match in similarities if match[2] < threshold]
