@@ -1,0 +1,12 @@
+# Merge top matching segments to create integrated road network
+integrated_segments = []
+
+for match in top_matches:
+    segment1 = dataset1.loc[dataset1['road_id'] == match[0], 'geometry'].iloc[0]
+    segment2 = dataset2.loc[dataset2['road_id'] == match[1], 'geometry'].iloc[0]
+    
+    integrated_geometry = segment1.union(segment2)
+    integrated_segments.append(integrated_geometry)
+
+# Create GeoDataFrame for integrated road network
+integrated_data = gpd.GeoDataFrame({'geometry': integrated_segments}, crs='epsg:4326')
