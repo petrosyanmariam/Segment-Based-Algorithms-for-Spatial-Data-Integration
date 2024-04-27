@@ -1,5 +1,15 @@
-# Sort similarities by score
-similarities.sort(key=lambda x: x[2])
+from shapely.geometry import LineString
 
-# Select top matches or use a threshold to filter matches
-top_matches = [match for match in similarities if match[2] < threshold]
+def calculate_similarity(segment1, segment2):
+    # Example: calculate Euclidean distance between segment centroids
+    centroid1 = segment1.centroid
+    centroid2 = segment2.centroid
+    distance = centroid1.distance(centroid2)
+    return distance
+
+similarities = []
+
+for idx1, row1 in segments1.iterrows():
+    for idx2, row2 in segments2.iterrows():
+        similarity_score = calculate_similarity(row1['geometry'], row2['geometry'])
+        similarities.append((row1['road_id'], row2['road_id'], similarity_score))
