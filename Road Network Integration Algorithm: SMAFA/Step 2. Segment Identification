@@ -1,0 +1,4 @@
+# Identify individual road segments based on essential attributes
+# (e.g., road ID, segment length, road type)
+segments1 = dataset1[['road_id', 'geometry']]
+segments2 = dataset2[['road_id', 'geometry']]
